@@ -1,0 +1,50 @@
+@use 'vars' as *;
+
+:root {
+  @include tema($light);
+  color-scheme: light dark;
+  --serif: #{$font-titulos};
+
+  @media (prefers-color-scheme: dark) {
+    @include tema($dark);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: $font;
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: $font-titulos; }
+
+.contenedor {
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+.muted { color: var(--muted); }
+.pequeno { font-size: 12px; }
+
+button, select, input[type='search'], .btn {
+  font: inherit;
+  color: var(--fg);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.btn {
+  cursor: pointer;
+
+  &:hover:not(:disabled) { border-color: var(--accent); }
+  &:disabled { opacity: 0.5; cursor: default; }
+}
+
+input[type='search'] { width: 100%; }
